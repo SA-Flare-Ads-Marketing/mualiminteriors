@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Roofing - Premium Roofing Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --light-gold: #F4E5C2;
+            --accent-gold: #FFD700;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --card-bg: #ffffff;
+            --border-color: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #f4f4f4;
+            --text-secondary: #b0b0b0;
+            --nav-bg: rgba(26, 26, 26, 0.95);
+            --card-bg: #2d2d2d;
+            --border-color: #404040;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: var(--transition);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .text-start {
+            text-align: right !important;
+        }
+
+        [dir="rtl"] .text-end {
+            text-align: left !important;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-gold) !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-brand i {
+            font-size: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            margin: 0 10px;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-gold) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gold);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Theme & Language Switchers */
+        .control-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .theme-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--border-color);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-switch::before {
+            content: '🌙';
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: white;
+            top: 2px;
+            left: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .theme-switch::before {
+            content: '☀️';
+            transform: translateX(30px);
+        }
+
+        .lang-switch {
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .lang-switch:hover {
+            background: var(--dark-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 600px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://picsum.photos/seed/roofing/1920/600') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-gold), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .btn-gold {
+            background: linear-gradient(45deg, var(--primary-gold), var(--dark-gold));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            color: white;
+        }
+
+        /* Cards */
+        .service-card, .portfolio-card, .testimonial-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover, .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            border-color: var(--primary-gold);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3, .portfolio-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .service-card p, .portfolio-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            padding: 60px 0;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            position: relative;
+            padding: 40px 30px;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-control, .form-select {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: var(--bg-secondary);
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-widget h4 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-widget ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-widget ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-widget ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-widget ul li a:hover {
+            color: var(--primary-gold);
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-gold);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--dark-gold);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .control-buttons {
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
+
+        /* Loading Animation */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--primary-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-home"></i>
+                <span data-en="Elite Roofing" data-ar="الأسقف المميزة">Elite Roofing</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services" data-en="Services" data-ar="الخدمات">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio" data-en="Portfolio" data-ar="معرض الأعمال">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" data-en="About" data-ar="من نحن">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                    </li>
+                </ul>
+                <div class="control-buttons">
+                    <div class="theme-switch" id="themeSwitch"></div>
+                    <button class="lang-switch" id="langSwitch">
+                        <span data-en="العربية" data-ar="English">العربية</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content animate-fade-in">
+                    <h1 data-en="Premium Roofing Solutions" data-ar="حلول التسقيف المتميزة">Premium Roofing Solutions</h1>
+                    <p data-en="Expert roofing services with 25+ years of experience. Quality materials, professional installation, and guaranteed satisfaction." 
+                       data-ar="خدمات تسقيف احترافية بخبرة تزيد عن 25 عاماً. مواد عالية الجودة، تركيب احترافي، ورضا مضمون.">
+                        Expert roofing services with 25+ years of experience. Quality materials, professional installation, and guaranteed satisfaction.
+                    </p>
+                    <div>
+                        <a href="#contact" class="btn-gold me-3">
+                            <span data-en="Get Free Quote" data-ar="احصل على عرض مجاني">Get Free Quote</span>
+                        </a>
+                        <a href="#portfolio" class="btn-gold" style="background: transparent; border: 2px solid var(--primary-gold);">
+                            <span data-en="View Projects" data-ar="عرض المشاريع">View Projects</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://picsum.photos/seed/roofer/600/400" alt="Roofing" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="1500">0</div>
+                        <div class="stat-label" data-en="Projects Completed" data-ar="مشاريع مكتملة">Projects Completed</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="25">0</div>
+                        <div class="stat-label" data-en="Years Experience" data-ar="سنوات الخبرة">Years Experience</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label" data-en="Happy Clients" data-ar="عملاء سعداء">% Happy Clients</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="24">0</div>
+                        <div class="stat-label" data-en="Award Wins" data-ar="جوائز فاز بها">Award Wins</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5" id="services">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold" data-en="Our Services" data-ar="خدماتنا">Our Services</h2>
+                <p class="lead text-muted" data-en="Comprehensive roofing solutions for every need" data-ar="حلول تسقيف شاملة لكل احتياج">Comprehensive roofing solutions for every need</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 data-en="Residential Roofing" data-ar="تسقيف سكني">Residential Roofing</h3>
+                        <p data-en="Complete residential roofing solutions including installation, repair, and maintenance for all types of homes." 
+                           data-ar="حلول تسقيف سكنية شاملة بما في ذلك التركيب والإصلاح والصيانة لجميع أنواع المنازل.">
+                            Complete residential roofing solutions including installation, repair, and maintenance for all types of homes.
+                        </p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="Shingle Installation" data-ar="تركيب القرميد">Shingle Installation</span></li>
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="Roof Inspection" data-ar="فحص السقف">Roof Inspection</span></li>
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="Emergency Repairs" data-ar="إصلاحات طارئة">Emergency Repairs</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 data-en="Commercial Roofing" data-ar="تسقيف تجاري">Commercial Roofing</h3>
+                        <p data-en="Professional commercial roofing services for businesses, warehouses, and industrial facilities with minimal disruption." 
+                           data-ar="خدمات تسقيف تجارية احترافية للشركات والمستودعات والمرافق الصناعية بأقل قدر من الإزعاج.">
+                            Professional commercial roofing services for businesses, warehouses, and industrial facilities with minimal disruption.
+                        </p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="Flat Roof Systems" data-ar="أنظمة الأسطح المسطحة">Flat Roof Systems</span></li>
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="Metal Roofing" data-ar="تسقيف معدني">Metal Roofing</span></li>
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="Maintenance Plans" data-ar="خطط الصيانة">Maintenance Plans</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 data-en="Roof Repair" data-ar="إصلاح السقف">Roof Repair</h3>
+                        <p data-en="Fast and reliable roof repair services to fix leaks, damage, and wear. We respond quickly to prevent further damage." 
+                           data-ar="خدمات إصلاح سقف سريعة وموثوقة لإصلاح التسريبات والأضرار والتآكل. نستجيب بسرعة لمنع المزيد من الضرر.">
+                            Fast and reliable roof repair services to fix leaks, damage, and wear. We respond quickly to prevent further damage.
+                        </p>
+                        <ul class="list-unstyled mt-3">
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="Leak Detection" data-ar="كشف التسريبات">Leak Detection</span></li>
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="Storm Damage" data-ar="أضرار العواصف">Storm Damage</span></li>
+                            <li><i class="fas fa-check text-warning me-2"></i><span data-en="24/7 Emergency" data-ar="طوارئ 24/7">24/7 Emergency</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="py-5 bg-light" id="portfolio">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold" data-en="Our Portfolio" data-ar="معرض أعمالنا">Our Portfolio</h2>
+                <p class="lead text-muted" data-en="Showcasing our finest roofing projects" data-ar="عرض أروع مشاريع التسقيف الخاصة بنا">Showcasing our finest roofing projects</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="portfolio-card">
+                        <img src="https://picsum.photos/seed/project1/400/300" alt="Project 1" class="img-fluid rounded mb-3">
+                        <h3 data-en="Modern Home Roofing" data-ar="تسقيف منزل حديث">Modern Home Roofing</h3>
+                        <p data-en="Complete roof replacement for a modern residential property with energy-efficient materials." 
+                           data-ar="استبدال كامل للسقف لممتلكة سكنية حديثة بمواد موفرة للطاقة.">
+                            Complete roof replacement for a modern residential property with energy-efficient materials.
+                        </p>
+                        <button class="btn btn-sm btn-outline-warning" data-en="View Details" data-ar="عرض التفاصيل">View Details</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-card">
+                        <img src="https://picsum.photos/seed/project2/400/300" alt="Project 2" class="img-fluid rounded mb-3">
+                        <h3 data-en="Commercial Complex" data-ar="مجمع تجاري">Commercial Complex</h3>
+                        <p data-en="Large-scale commercial roofing project for a shopping complex with advanced drainage systems." 
+                           data-ar="مشروع تسقيف تجاري واسع النطاق لمجمع تسوق مع أنظمة تصريف متقدمة.">
+                            Large-scale commercial roofing project for a shopping complex with advanced drainage systems.
+                        </p>
+                        <button class="btn btn-sm btn-outline-warning" data-en="View Details" data-ar="عرض التفاصيل">View Details</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-card">
+                        <img src="https://picsum.photos/seed/project3/400/300" alt="Project 3" class="img-fluid rounded mb-3">
+                        <h3 data-en="Historic Restoration" data-ar="ترميم تاريخي">Historic Restoration</h3>
+                        <p data-en="Careful restoration of a historic building's roof while preserving its original architectural character." 
+                           data-ar="ترميم دقيق لسقف مبنى تاريخي مع الحفاظ على طابعه المعماري الأصلي.">
+                            Careful restoration of a historic building's roof while preserving its original architectural character.
+                        </p>
+                        <button class="btn btn-sm btn-outline-warning" data-en="View Details" data-ar="عرض التفاصيل">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-5" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://picsum.photos/seed/team/600/400" alt="Our Team" class="img-fluid rounded-3 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-4 fw-bold mb-4" data-en="About Elite Roofing" data-ar="عن الأسقف المميزة">About Elite Roofing</h2>
+                    <p class="lead" data-en="With over 25 years of excellence in the roofing industry, we've built a reputation for quality, reliability, and customer satisfaction." 
+                       data-ar="مع أكثر من 25 عاماً من التميز في صناعة التسقيف، بنينا سمعة للجودة والموثوقية ورضا العملاء.">
+                        With over 25 years of excellence in the roofing industry, we've built a reputation for quality, reliability, and customer satisfaction.
+                    </p>
+                    <p data-en="Our team of certified professionals is dedicated to providing the highest quality roofing solutions using the latest technology and premium materials. We understand that your roof is one of the most important investments in your property, and we treat every project with the care and attention it deserves." 
+                       data-ar="فريقنا من المحترفين المعتمدين مكرس لتقديم حلول تسقيف عالية الجودة باستخدام أحدث التقنيات والمواد المتميزة. نفهم أن سقفك هو أحد أهم الاستثمارات في ممتلكاتك، ونعامل كل مشروع بالرعاية والاهتمام الذي يستحقه.">
+                        Our team of certified professionals is dedicated to providing the highest quality roofing solutions using the latest technology and premium materials. We understand that your roof is one of the most important investments in your property, and we treat every project with the care and attention it deserves.
+                    </p>
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <h4 class="text-warning"><i class="fas fa-award me-2"></i><span data-en="Licensed & Insured" data-ar="مرخص ومؤمن">Licensed & Insured</span></h4>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="text-warning"><i class="fas fa-shield-alt me-2"></i><span data-en="Warranty Protected" data-ar="محمي بالضمان">Warranty Protected</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold" data-en="What Our Clients Say" data-ar="ماذا يقول عملاؤنا">What Our Clients Say</h2>
+                <p class="lead text-muted" data-en="Real reviews from satisfied customers" data-ar="مراجعات حقيقية من العملاء الراضين">Real reviews from satisfied customers</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <p class="testimonial-text" data-en="Exceptional service from start to finish. The team was professional, efficient, and the quality of work exceeded our expectations." 
+                           data-ar="خدمة استثنائية من البداية إلى النهاية. الفريق كان محترفاً وفعالاً، وجودة العمل تجاوزت توقعاتنا.">
+                            Exceptional service from start to finish. The team was professional, efficient, and the quality of work exceeded our expectations.
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person1/50/50" alt="Client" class="author-img">
+                            <div>
+                                <h6 class="mb-0">Sarah Johnson</h6>
+                                <small class="text-muted" data-en="Homeowner" data-ar="صاحبة منزل">Homeowner</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <p class="testimonial-text" data-en="Best roofing company in town! They handled our commercial project with minimal disruption and delivered on time." 
+                           data-ar="أفضل شركة تسقيف في المدينة! تعاملوا مع مشروعنا التجاري بأقل قدر من الإزعاج وسلموا في الوقت المحدد.">
+                            Best roofing company in town! They handled our commercial project with minimal disruption and delivered on time.
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person2/50/50" alt="Client" class="author-img">
+                            <div>
+                                <h6 class="mb-0">Michael Chen</h6>
+                                <small class="text-muted" data-en="Business Owner" data-ar="صاحب عمل">Business Owner</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <i class="fas fa-quote-right quote-icon"></i>
+                        <p class="testimonial-text" data-en="Professional, reliable, and affordable. They transformed our old roof into something beautiful and durable." 
+                           data-ar="محترفون، موثوقون، ومعقولون التكلفة. حولوا سقفنا القديم إلى شيء جميل ومتين.">
+                            Professional, reliable, and affordable. They transformed our old roof into something beautiful and durable.
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://picsum.photos/seed/person3/50/50" alt="Client" class="author-img">
+                            <div>
+                                <h6 class="mb-0">Emily Davis</h6>
+                                <small class="text-muted" data-en="Property Manager" data-ar="مديرة عقارات">Property Manager</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold" data-en="Get In Touch" data-ar="تواصل معنا">Get In Touch</h2>
+                <p class="lead text-muted" data-en="Ready to start your roofing project? Contact us today!" data-ar="هل أنت مستعد لبدء مشروع التسقيف الخاص بك؟ تواصل معنا اليوم!">Ready to start your roofing project? Contact us today!</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" data-en="Your Name" data-ar="اسمك">Your Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" data-en="Your Email" data-ar="بريدك الإلكتروني">Your Email</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" data-en="Phone Number" data-ar="رقم الهاتف">Phone Number</label>
+                                    <input type="tel" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label" data-en="Service Type" data-ar="نوع الخدمة">Service Type</label>
+                                    <select class="form-select" required>
+                                        <option value="" data-en="Select Service" data-ar="اختر الخدمة">Select Service</option>
+                                        <option value="residential" data-en="Residential" data-ar="سكني">Residential</option>
+                                        <option value="commercial" data-en="Commercial" data-ar="تجاري">Commercial</option>
+                                        <option value="repair" data-en="Repair" data-ar="إصلاح">Repair</option>
+                                        <option value="inspection" data-en="Inspection" data-ar="فحص">Inspection</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" data-en="Message" data-ar="الرسالة">Message</label>
+                                <textarea class="form-control" rows="5" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn-gold btn-lg">
+                                    <span data-en="Send Message" data-ar="إرسال الرسالة">Send Message</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-map-marker-alt fa-3x text-warning mb-3"></i>
+                    <h5 data-en="Visit Us" data-ar="زرنا">Visit Us</h5>
+                    <p data-en="123 Roof Street, City, State 12345" data-ar="123 شارع السقف، المدينة، الولاية 12345">123 Roof Street, City, State 12345</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-phone fa-3x text-warning mb-3"></i>
+                    <h5 data-en="Call Us" data-ar="اتصل بنا">Call Us</h5>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-envelope fa-3x text-warning mb-3"></i>
+                    <h5 data-en="Email Us" data-ar="راسلنا عبر البريد">Email Us</h5>
+                    <p>info@eliteroofing.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-widget">
+                        <h4><i class="fas fa-home me-2"></i><span data-en="Elite Roofing" data-ar="الأسقف المميزة">Elite Roofing</span></h4>
+                        <p data-en="Your trusted partner for all roofing needs. Quality, reliability, and excellence in every project." 
+                           data-ar="شريكك الموثوق لجميع احتياجات التسقيف. الجودة والموثوقية والتميز في كل مشروع.">
+                            Your trusted partner for all roofing needs. Quality, reliability, and excellence in every project.
+                        </p>
+                        <div class="social-icons mt-3">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-widget">
+                        <h4 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h4>
+                        <ul>
+                            <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                            <li><a href="#services" data-en="Services" data-ar="الخدمات">Services</a></li>
+                            <li><a href="#portfolio" data-en="Portfolio" data-ar="معرض الأعمال">Portfolio</a></li>
+                            <li><a href="#about" data-en="About Us" data-ar="من نحن">About Us</a></li>
+                            <li><a href="#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-widget">
+                        <h4 data-en="Newsletter" data-ar="النشرة البريدية">Newsletter</h4>
+                        <p data-en="Subscribe to get updates on our latest services and offers." 
+                           data-ar="اشترك للحصول على تحديثات حول أحدث خدماتنا وعروضنا.">
+                            Subscribe to get updates on our latest services and offers.
+                        </p>
+                        <form class="mt-3">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Your Email">
+                                <button class="btn btn-warning" type="submit">
+                                    <span data-en="Subscribe" data-ar="اشترك">Subscribe</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: var(--border-color);">
+            <div class="text-center">
+                <p class="mb-0" data-en="© 2024 Elite Roofing. All rights reserved." data-ar="© 2024 الأسقف المميزة. جميع الحقوق محفوظة.">
+                    © 2024 Elite Roofing. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Page Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('pageLoader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('pageLoader').classList.add('hidden');
+                }, 500);
+            }, 1000);
+        });
+
+        // Theme Switcher
+        const themeSwitch = document.getElementById('themeSwitch');
+        const body = document.body;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+
+        themeSwitch.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Language Switcher
+        const langSwitch = document.getElementById('langSwitch');
+        const html = document.documentElement;
+        let currentLang = 'en';
+
+        langSwitch.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            html.setAttribute('lang', currentLang);
+            html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            
+            // Update all elements with data-en and data-ar attributes
+            document.querySelectorAll('[data-en][data-ar]').forEach(element => {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = element.getAttribute(`data-${currentLang}`);
+                } else {
+                    element.textContent = element.getAttribute(`data-${currentLang}`);
+                }
+            });
+
+            // Update button text
+            langSwitch.querySelector('span').textContent = currentLang === 'en' ? 'العربية' : 'English';
+            
+            // Save language preference
+            localStorage.setItem('language', currentLang);
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('language') || 'en';
+        if (savedLang !== 'en') {
+            langSwitch.click();
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animated Counter
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const countUp = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(countUp, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        };
+
+        // Trigger counter animation when in viewport
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    countUp();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Create success message
+            const successMsg = document.createElement('div');
+            successMsg.className = 'alert alert-success mt-3';
+            successMsg.innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>
+                <span data-en="Thank you for your message! We'll get back to you soon." 
+                      data-ar="شكراً لرسالتك! سنتواصل معك قريباً.">
+                    Thank you for your message! We'll get back to you soon.
+                </span>
+            `;
+            
+            // Update text based on current language
+            if (currentLang === 'ar') {
+                successMsg.querySelector('span').textContent = successMsg.querySelector('span').getAttribute('data-ar');
+            }
+            
+            // Insert message and reset form
+            e.target.appendChild(successMsg);
+            e.target.reset();
+            
+            // Remove message after 5 seconds
+            setTimeout(() => {
+                successMsg.remove();
+            }, 5000);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 0';
+            } else {
+                navbar.style.padding = '1rem 0';
+            }
+        });
+
+        // Add animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .portfolio-card, .testimonial-card');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                
+                if (elementTop < window.innerHeight && elementBottom > 0) {
+                    element.classList.add('animate-fade-in');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Initial check
+    </script>
+</body>
+</html>
